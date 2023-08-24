@@ -10,23 +10,16 @@ public class Solution {
             System.out.print("#" + t + " ");
             int N = sc.nextInt();
 
-            PriorityQueue<Integer> heap = new PriorityQueue<Integer>(new Comparator<Integer>() {
-                @Override
-                public int compare(Integer o1, Integer o2) {
-                    return Integer.compare(o2, o1);
-                }
-            });
+            PriorityQueue<Integer> pq = new PriorityQueue<Integer>(Comparator.reverseOrder());
 
-            for(int n=0; n<N; n++) {
-                int in = sc.nextInt();
-                if(in == 1){ //힙에 추가 
-                    in = sc.nextInt();
-                    heap.add(in);
+            for(int i=0; i<N; i++) {
+                int n = sc.nextInt();
+                if(n==1){
+                    n = sc.nextInt();
+                    pq.add(n);
                 } else {
-                    // 비어있는 경우 -1을 출력 
-                    if(!heap.isEmpty())
-                        System.out.print(heap.poll() + " ");
-                    // 비어있지 않다면 하나 빼서 출력
+                    if(!pq.isEmpty())
+                        System.out.print(pq.poll() + " ");
                     else 
                         System.out.print("-1 ");
                 }
