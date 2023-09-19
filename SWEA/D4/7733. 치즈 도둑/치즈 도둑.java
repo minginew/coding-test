@@ -18,15 +18,17 @@ public class Solution {
 			N = Integer.parseInt(br.readLine());
 			maxChunk=1;
 			map = new int[N][N];
-			
+			int min = 100;
 			for(int r=0; r<N; r++) {//치즈세팅
 				String[] row = br.readLine().split(" ");
 				for(int c=0; c<N; c++) {
 					map[r][c] = Integer.parseInt(row[c]);
+					if(min>map[r][c]) min = map[r][c];
 				}
 			}
 			
-			for(int i=1; i<=100; i++) {//i는 1일~100일까지
+			for(int i=1; i<100; i++) {//i는 1일~100일까지
+				if(i<min) continue;
 				Queue<int[]> q = new LinkedList<>();
 				boolean[][] visit = new boolean[N][N];
 				
