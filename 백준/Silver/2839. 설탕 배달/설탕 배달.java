@@ -1,29 +1,24 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 
 public class Main {
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws  Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
+        int[] dp = new int[N+1];
 
-        int five = N/5;
-        int three = 1;
-        if(five*5 == N) {
-            System.out.println(five);
+        Arrays.fill(dp,N);
+        dp[0] = 0;
+        dp[3] = 1;
+        for(int i=5; i<=N; i++){
+            dp[i] = Math.min(dp[i-3]+1,dp[i]);
+            dp[i] = Math.min(dp[i-5]+1,dp[i]);
+        }
+        if(dp[N] == N){
+            System.out.println(-1);
             return;
         }
-        while (five>=0){
-            int sum = five*5 + three*3;
-            if(sum == N){
-                System.out.println(five + three);
-                return;
-            }else if(sum<N){
-                three++;
-            } else if (sum>N) {
-                five--;
-                three = 1;
-            }
-        }
-        System.out.println(-1);
+        System.out.println(dp[N]);
     }
 }
