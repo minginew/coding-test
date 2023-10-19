@@ -24,6 +24,7 @@ public class Main {
 	}
 	public static void main(String[] args) throws Exception{
 		BufferedReader br =  new BufferedReader(new InputStreamReader(System.in));
+		StringBuilder sb = new StringBuilder();
 		String[] in1 = br.readLine().split(" ");
 		N = Integer.parseInt(in1[0]);
 		M = Integer.parseInt(in1[1]);
@@ -83,14 +84,13 @@ public class Main {
 				net.offer(new int[] {st,ed});
 			}
 		}
-		
-		System.out.println(total + " " + net.size());
+		sb.append(total).append(" ").append(net.size()).append("\n");
 		while(!net.isEmpty()) {
-			System.out.print(net.peek()[0]+1);
-			System.out.print(" ");
-			System.out.print(net.poll()[1]+1);
-			System.out.println();
+			sb.append(net.peek()[0]+1)
+				.append(" ")
+				.append(net.poll()[1]+1)
+				.append("\n");
 		}
-		
+		System.out.println(sb);
 	}
 }
