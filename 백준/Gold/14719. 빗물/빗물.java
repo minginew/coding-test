@@ -1,6 +1,5 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 
 public class Main {
 	static int N,M;
@@ -26,9 +25,9 @@ public class Main {
 			int right = 0;
 			int count = 0;
 			for(int c=0; c<M; c++) {
-				if(left==0 && right==0) {
+				if(left==0) {
 					left = map[r][c];
-				}else if(left==1 && right==0){
+				}else if(right==0){
 					right = map[r][c];
 					if(right==1) {
 						answer += count;
