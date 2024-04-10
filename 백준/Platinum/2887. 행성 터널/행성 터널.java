@@ -9,11 +9,13 @@ public class Main {
     static long totalMin;
     // 방문배열
     static boolean[] visit;
+    // 큐에 들어왔던 간선정보
+    static int[] queueInfo;
+
     // 행성 리스트
     static List<int[]> planets;
     // 간선 정보
     static List<List<Edge>> edgeList;
-
     static class Edge {
         int st;
         int ed;
@@ -29,10 +31,12 @@ public class Main {
 
         N = Integer.parseInt(br.readLine());
         visit = new boolean[N];
+        queueInfo = new int[N];
         planets = new ArrayList<>();
         edgeList = new ArrayList<>();
 
         for(int i=0; i<N; i++){
+            queueInfo[i] = Integer.MAX_VALUE;
             edgeList.add(new ArrayList<>());
         }
 
@@ -79,8 +83,11 @@ public class Main {
         });
 
         visit[start] = true;
-        pq.addAll(edgeList.get(start));
-        
+        for(Edge e : edgeList.get(0)){
+            queueInfo[e.ed] = e.w;
+            pq.offer(e);
+        }
+
         while (!pq.isEmpty()){
             Edge curr = pq.poll();
             if(visit[curr.ed]) continue;
@@ -90,8 +97,10 @@ public class Main {
             int newSt = curr.ed;
             for(int i=0; i<edgeList.get(newSt).size(); i++) {
                 Edge next = edgeList.get(newSt).get(i);
-                if (visit[next.ed]) continue;
-                pq.offer(next);
+                if (!visit[next.ed] && queueInfo[next.ed] >= next.w){
+                    queueInfo[next.ed] = next.w;
+                    pq.offer(next);
+                }
             }
         }
     }
