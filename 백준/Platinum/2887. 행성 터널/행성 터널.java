@@ -97,6 +97,7 @@ public class Main {
             int newSt = curr.ed;
             for(int i=0; i<edgeList.get(newSt).size(); i++) {
                 Edge next = edgeList.get(newSt).get(i);
+                // 방문한 간선정보를 기록하는게 메모리에 유의미한 변화는 주지 못했다.
                 if (!visit[next.ed] && queueInfo[next.ed] >= next.w){
                     queueInfo[next.ed] = next.w;
                     pq.offer(next);
