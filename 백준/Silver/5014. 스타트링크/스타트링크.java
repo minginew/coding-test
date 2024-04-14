@@ -8,9 +8,11 @@ import java.util.Queue;
 public class Main {
     // 전체층, 강호위치, 스타트링크위치, 위층버튼, 아래층버튼
     static int F,S,G,move;
+    // [0]: 위층버튼, [1]: 아래층버튼
     static int[] dx = new int[2];
     static int[] map;
     static boolean[] visit;
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String[] input = br.readLine().split(" ");
@@ -32,7 +34,9 @@ public class Main {
     }
 
     static void bfs(int S, int G){
+        // 0층은 안씀, 강호 위치 true
         visit[0] = visit[S] = true;
+        // 스타트링크 위치 표시
         map[G] = 1;
         Queue<Integer> q = new LinkedList<>();
         q.offer(S);
