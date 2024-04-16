@@ -4,7 +4,9 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 
 public class Main {
+    //테스트, 학생수, 팀을 이룬 학생
     static int T,N,total;
+    // 방문배열(싸이클이 형성되는지 알기위함), 확인이 끝난 학생 체크하는 배열 
     static boolean[] visit, finish;
     static int[] map;
     public static void main(String[] args) throws Exception{
