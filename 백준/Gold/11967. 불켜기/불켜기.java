@@ -9,10 +9,14 @@ public class Main {
     static int N,M,count;
     static int[] dr = {0,0,-1,1};
     static int[] dc = {-1,1,0,0};
+    // 맵, 1 == 불켜짐 
     static int[][] map;
+    // 방문배열
     static boolean[][] visit;
+    // 스위치 정보
     static List<int[]>[][] light;
     static Queue<int[]> q = new LinkedList<>();
+
     public static void main(String[] args)throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -26,7 +30,6 @@ public class Main {
         for(int i=0; i<=N; i++)
             for (int j=0; j<=N; j++)
                 light[i][j] = new ArrayList<>();
-
 
         for(int i=0; i<M; i++){
             String[] lightInfo = br.readLine().split(" ");
@@ -43,10 +46,9 @@ public class Main {
 
         bfs();
         System.out.println(count+1);
-
-
     }
 
+    // BFS
     static void bfs(){
         while (!q.isEmpty()){
             int[] curr = q.poll();
@@ -77,6 +79,7 @@ public class Main {
         }
     }
 
+    // BFS 상하좌우 탐색
     static void offer(int r, int c){
         for(int d=0; d<4; d++){
             int nr = r + dr[d];
