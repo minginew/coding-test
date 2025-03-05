@@ -36,9 +36,7 @@ public class Main {
             childs.get(pr2).add(ch);
         }
         bfs(root);
-//        for(String st : lineage.keySet()){
-//            System.out.println(st + "//" + lineage.get(st));
-//        }
+
         String king = "";
         double maxLineage = 0;
         for(int i=0; i<M; i++){
